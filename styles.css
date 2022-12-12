@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+
+#gridContainer {
+    display: flex;
+    border: 2px solid black;
+}
+
+.gridSquare {
+    border: 2px solid red;
+}
