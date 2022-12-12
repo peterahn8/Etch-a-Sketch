@@ -1,18 +1,28 @@
 const gridContainer = document.querySelector("#gridContainer");
 
+function griddify(rows, columns) {
 
-function addGridSquare() {
-    const newGridSquare = document.createElement("div");
-    const gridSquareContent = document.createTextNode("test text");
-    newGridSquare.classList.add("gridSquare");
-    newGridSquare.appendChild(gridSquareContent);
-    gridContainer.appendChild(newGridSquare);
+    for (let x = 1; x < rows+1; x++) {
+        const newRow = document.createElement("div");
+        gridContainer.appendChild(newRow);
+        newRow.setAttribute("id", `column${x}`);
+
+        for (let y = 1;  y < columns+1; y++) {
+            const newGridSquare = document.createElement("div");
+            newGridSquare.setAttribute("id", `column${x}-row${y}`);
+            newGridSquare.classList.add("gridSquare");
+            newRow.appendChild(newGridSquare);
+        }
+    }
 }
 
-function griddify() {
-    for (let i = 0; i < 16*16; i++) {
-        addGridSquare();
-    };
-}
+griddify(16,16)
 
-griddify();
+const gridSquares = document.querySelectorAll(".gridSquare")
+
+gridSquares.forEach(square => {
+    square.addEventListener("mouseenter", function handleClick(event) {
+        console.log('mouseover', event);
+        square.setAttribute("style", "background-color: black;");
+    });
+});
